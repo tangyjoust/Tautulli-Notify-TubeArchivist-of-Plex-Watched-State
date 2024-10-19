@@ -14,20 +14,10 @@ Settings:
   [Plex]
   user_ids: a comma separated list of user ids, only entries for these users will be synced
     The user id for a user can be found in your url in Tautulli when you click on a user.
-  
-
-  To set the access code use `urn:ietf:wg:oauth:2.0:oob` as a redirect URI on your application.
-  Then execute the script:
-  python ./tubearchivist_sync.py --contentType authenticate --userId -1
-  And follow the instructions shown.
 
   [TubeArchivist]
-  Update `api_token` with your  TubeArchivist API Key.
+  Update `url` with your TubeArchivist url and `api_token` with your TubeArchivist API Key.
   Look [here](https://docs.tubearchivist.com/api/introduction/#authentication) as for how to receive these credentials.
-
-  To set the access code execute the script:
-  python ./tubearchivist_sync.py --contentType tubearchivist_authenticate --userId -1
-  And follow the instructions shown.
 
 Adding the script to Tautulli:
 Tautulli > Settings > Notification Agents > Add a new notification agent > Script
@@ -58,7 +48,7 @@ Tautulli > Settings > Notification Agents > New Script > Script Arguments:
   
   Select: Watched
   Arguments:  --userId {user_id} --contentType {media_type}
-              <episode>--youtube_id {filename:[:-4]}</episode>
+              <episode>--youtube_id {filename}</episode>
 
   Save
   Close
@@ -105,7 +95,7 @@ def write_settings():
     sys.exit(1)
 
 def sync_for_user(user_id):
-  """Returns wheter or not to sync for the passed user_id"""
+  """Returns whether or not to sync for the passed user_id"""
   try:
     user_ids = config.get('Plex', 'user_ids')
   except (NoSectionError, NoOptionError):
@@ -116,7 +106,7 @@ def sync_for_user(user_id):
 
 class TubeArchivist:
   def __init__(self, youtube_id):
-    self.youtube_id = youtube_id
+    self.youtube_id = youtube_id[:-4]
 
     self.session = requests.Session()
     self.session.params = {}
@@ -139,7 +129,7 @@ class TubeArchivist:
 
   def mark_watched(self):
     method = 'post'
-    url = self.url
+    url = self.url + '/api/watched/'
 
     headers = {
       'Content-Type': 'application/json',
