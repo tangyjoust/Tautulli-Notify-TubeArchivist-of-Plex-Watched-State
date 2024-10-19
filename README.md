@@ -60,6 +60,6 @@ Tautulli > Settings > Notification Agents > New Script > Script Arguments:
   Close
 ```
 
-#Thanks
+# Thanks
 
 Heavily based on https://github.com/JvSomeren/tautulli-watched-sync/
