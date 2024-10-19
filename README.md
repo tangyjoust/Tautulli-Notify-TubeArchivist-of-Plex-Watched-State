@@ -1,7 +1,9 @@
 # Tautulli watched sync
 Automatically synchronize watched Youtube Videos to TubeArchivist. 
 
-This assumes that the filename for the videos will be {youtube_id}.ext where the extension is removed before passing on to TubeArchivist as the key to mark watched.
+A script for [TubeArchivist](https://github.com/tubearchivist/tubearchivist). Do not post issues regarding this to the main repository
+
+This assumes that the filename for the videos will be `{youtube_id}.ext` where the extension is removed before passing on to TubeArchivist as the key to mark watched.
 
 ## Setup
 Download `tubearchivist_sync.py` and `sync_settings.ini.example` to your Tautulli host.
