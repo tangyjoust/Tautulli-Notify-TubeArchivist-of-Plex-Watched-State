@@ -1,4 +1,5 @@
-# Tautulli watched sync
+# Tautulli Motify TubeArchivist of Plex Watched State
+
 Automatically synchronize watched Youtube Videos to TubeArchivist. 
 
 A script for [TubeArchivist](https://github.com/tubearchivist/tubearchivist). Do not post issues regarding this to the main repository
