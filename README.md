@@ -59,3 +59,7 @@ Tautulli > Settings > Notification Agents > New Script > Script Arguments:
   Save
   Close
 ```
+
+#Thanks
+
+Heavily based on https://github.com/JvSomeren/tautulli-watched-sync/
